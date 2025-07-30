@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+  web:
+    build: .
+    ports:
+      - "5555:5555"
+    environment:
+      - DB_HOST=db
+      - DB_PORT=5432
+      - DB_NAME=shop
+      - DB_USER=postgres
+      - DB_PASSWORD=postgres
+      - UPDATE_INTERVAL=20
+      - LOG_LEVEL=INFO
+    depends_on:
+      - db
+    volumes:
+      - ./logs:/app/logs
+    restart: unless-stopped
+
+  db:
+    image: postgres:13
+    environment:
+      - POSTGRES_DB=shop
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
