@@ -1,8 +1,8 @@
 # Старт приложения
 
 ```
-git clone 
-cd <папка-проекта>
+git clone https://github.com/Semyon-O/nexor_test.git
+cd nexor_test
 ```
 
 ```
