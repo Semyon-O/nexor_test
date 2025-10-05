@@ -5,6 +5,8 @@ import logging
 
 bp = Blueprint('main', __name__)
 
+# Это тестовый комментарии
+# Фича 2
 
 @bp.route('/info')
 def product_info():
